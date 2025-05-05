@@ -8,16 +8,16 @@ using namespace std;
 class Solution {
     public:
         int numEquivDominoPairs(vector<vector<int>>& dominoes) {
-            unordered_map<int, int> count;
-            int result = 0;
-    
-            for (auto& d : dominoes) {
-                int a = d[0], b = d[1];
-                int key = a < b ? a * 10 + b : b * 10 + a;
-                result += count[key]++;
+            unordered_map<int,int> map;
+            int cont = 0;
+            for(int i=0;i<dominoes.size();i++){
+                int value1 = dominoes[i][0];
+                int value2 = dominoes[i][1];
+                int key = (value1 < value2) ? value1 * 10 + value2 : value2 * 10 + value1;
+                cont += map[key]++;
             }
     
-            return result;
+            return cont;
         }
     };
 
